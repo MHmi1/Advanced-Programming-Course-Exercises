@@ -15,7 +15,6 @@
 
 using namespace std;
 vector<string> history_vec; //vector for store answers history
-
 void history() //print answer(s)
 {
     cout << " >history " << endl;
@@ -25,7 +24,7 @@ void history() //print answer(s)
     }
 }
 
-void calculate(string opr1, string opr2, size_t oprator) //Build suitable objects and call functions that fit any operator 
+void calculate(string opr1,string opr2,size_t oprator)//Build suitable objects and call functions that fit any operator 
 {
     if (opr1.size() == 1 && opr2.size() == 1) //creat object
     {
@@ -96,7 +95,8 @@ void calculate(string opr1, string opr2, size_t oprator) //Build suitable object
 
     if (oprator == 2) //operator - function call
     {
-        cout << _minus(opr1, opr2) << endl;
+        cout.flush();
+        cout<< _minus(opr1, opr2) <<endl;
         history_vec.push_back(_minus(opr1, opr2));
     }
 
@@ -120,7 +120,7 @@ void calculate(string opr1, string opr2, size_t oprator) //Build suitable object
         history_vec.push_back(div(opr1, opr2));
     }
 
-    if (oprator == 5)  //operator <*> function call
+    if (oprator == 5)  //operator < function call
     {
         try
         {
@@ -200,7 +200,7 @@ void calculate(string opr1, string opr2, size_t oprator) //Build suitable object
 string subs(string s, size_t begin, size_t end) // Function for separating a string based on its upper and lower bounds 
 {
     string temp;
-    if (end > s.size())
+    if (end > s.size() || begin > end)
     {
         return "false";
     }

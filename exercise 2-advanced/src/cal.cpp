@@ -9,14 +9,14 @@
 typedef unsigned int ui;
 using namespace std;
 //*******************************************
-class mes : public std::logic_error  //exception handling 
+class mes : public std::logic_error //exception handling
 {
 public:
     mes() : logic_error("your operand is incorrect !!"){};
 };
 
 //  ****************************************
-template <class L, class R>   // Add two strings and sort alphabetically by ASCII code + operator
+template <class L, class R> // Add two strings and sort alphabetically by ASCII code + operator
 string sum(L left, R right)
 {
     string temp = left + right;
@@ -26,33 +26,32 @@ string sum(L left, R right)
 }
 
 //  ****************************************
-template <class L, class R>  //Implementation  of - operator
+template <class L, class R> //Implementation  of - operator
 string _minus(L left, R right)
 {
     string leftop = left, rightop = right;
-    string temp = "";
-    string temp1 = "";
+    string temp;
+    size_t len = 0;
 
     if (leftop.size() > rightop.size())
     {
-        for (int i = 0; i <= rightop.size(); i++)
-        {
-            temp = leftop[i];
-        }
-        cout << " -> " << (leftop.size() - rightop.size()) << endl;
+        len = leftop.size() - rightop.size();
+        temp = leftop.substr(0, len + 1);
+        cout<<" -> "<<len<< " -> ";
         return temp;
     }
-    else if (leftop.size() < rightop.size())
-    {
-        for (int k = 0; k <= rightop.size(); k++)
-        {
-            temp1 = leftop[k];
-        }
-        cout << " -> " << (rightop.size() - leftop.size()) << endl;
-        return temp1;
-    }
 
-    return temp;
+    if (rightop.size() > leftop.size())
+    {
+        len = rightop.size() - leftop.size();
+        temp = rightop.substr(0, len + 1);
+        cout<<" -> "<<len<< " -> ";
+        return temp;
+    }
+    if (rightop.size() == leftop.size())
+    {
+        return "Null";
+    }
 }
 
 //  ****************************************
@@ -156,8 +155,8 @@ string unequal(L left, R right)
     string rightop = right;
     ui index;
     bool find = 0;
- 
- if (rightop.size() != 1)
+
+    if (rightop.size() != 1)
     {
         throw invalid_argument("The second operand must be single character !!");
     }
@@ -171,7 +170,6 @@ string unequal(L left, R right)
             break;
         }
     }
-
     if (find)
     {
         string str1 = "", str2 = "";
@@ -187,7 +185,6 @@ string unequal(L left, R right)
                 str2 += leftop[i];
             }
         }
-
         leftop = "";
         leftop += str2;
         leftop += rightop;
